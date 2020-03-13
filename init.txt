@@ -1,0 +1,217 @@
+###
+### 标志
+###
+
+@bg white.png 0
+@ch c suika.png 1.0
+@se suika.ogg
+@wait 2.0
+@ch c none 1.0
+
+###
+### 菜单
+###
+
+@vol bgm 1.0
+@bgm 01.ogg
+@bg menu.png 1.0
+
+:MENU
+@menu menu.png menu_selected.png START 27 485 317 193 LOAD 357 493 318 213 QUIT 678 492 315 191
+
+:START
+@se click.ogg
+@goto SCENE1
+
+:LOAD
+@se click.ogg
+@goto $LOAD
+@goto MENU
+
+:QUIT
+@se click.ogg
+@goto END
+
+###
+### 场景1 (台词与序章的交错)
+###
+
+:SCENE1
+
+@vol bgm 0.0 1.0
+@bg white.png 1.0
+@bgm cicada.ogg
+@vol bgm 1.0 1.0
+@bg roof.png 1.0
+@ch c 001-fun.png 1.0
+*？？？*001.ogg*啊啊，好舒服的风……。
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*？？？*002.ogg*（我现在从暑假的补习中偷偷跑出来，到了学校的楼顶。）
+
+@vol bgm 1.0 1.0
+@ch c 001-happy.png 1.0
+*？？？*003.ogg*补习是不会算入出勤记录的，所以没关系的啦～。
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*？？？*004.ogg*（这附近看不到别的楼房，在稍远一点的地方能看到海岸线。这里是北海道的乡下小镇。）
+
+@vol bgm 1.0 1.0
+@ch c 001-fun.png 1.0
+*？？？*005.ogg*你问我为什么要从补习课中溜出来？
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*？？？*006.ogg*（啊，忘记介绍了。我的名字是みどり。在这个乡下小镇当一个女高中生。我家是农家哦。）
+
+@vol bgm 1.0 1.0
+@ch c 001-angry.png 1.0
+*みどり*007.ogg*然后呢……
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*みどり*008.ogg*（对了。有一件很重要的事情。今天我出现在这里的理由是……。）
+
+@vol bgm 1.0 1.0
+@ch c 001-normal.png 1.0
+*みどり*009.ogg*要对你……
+
+@vol bgm 0.0 1.0
+@ch c 001-happy.png 1.0
+*みどり*010.ogg*要对你……讲解关于Suika 2的事情！
+
+###
+### 场景2 (在楼顶打招呼)
+###
+
+@bgm 02.ogg
+@vol bgm 1.0 1.0
+@ch c 001-happy.png 1.0
+*みどり*011.ogg*你好！谢谢你使用Suika 2！
+*みどり*012.ogg*虽然我猜你已经知道了，这个Suika 2是制作文字冒险游戏的工具哦。
+*みどり*013.ogg*你可以自由使用，在PC和Mac上都能启动哦，挺厉害的吧？
+
+@ch c 001-fun.png 1.0
+*みどり*014.ogg*作者说希望你提问哦。你想问些什么呢？
+@ch c none 1.0
+
+###
+### 场景3 (在楼顶接受提问)
+###
+
+:LOOP1
+@select L1_ADVANTAGE L1_ENV L1_NEXT 有什么优点？ 在哪种环境下运行？ 下一步
+
+:L1_ADVANTAGE
+Suika 2的优点是能在各种平台上运行。
+第一、准备了Windows应用和Mac应用，不管哪个都能同样运行。
+游戏开发者不必为用户使用不同操作系统感到麻烦。
+第二、GPU不会发生互换性问题。
+针对画面的描绘由CPU进行高速的处理。会对用户所使用的CPU进行针对性的特别优化。
+第三、因为用户目前还不多，所以可以得到作者的无偿支援。
+如果有愿意使用Suika 2的游戏开发者，作者会很高兴地提供帮助。
+@set $1 = 1
+@ch c 001-fun.png 1.0
+*みどり*015.ogg*嘿，原来是这样啊。我都不知道呢。
+*みどり*016.ogg*还有其他要问的问题吗？
+@ch c none 1.0
+@goto LOOP1
+
+:L1_ENV
+Windows应用已确认可以在Windows XP之后的系统上运行。最新的Windows 10平板也可得到正常对应。
+Mac应用已确认可以在Mac OS X 10.6.8之后的系统上运行。最新的l Capitan也可以得到正常对应。
+而且更进一步，在Linux上也可运行。Suika 2几乎全部内容都是在Linux上被开发出来的。
+@set $2 = 1
+@ch c 001-fun.png 1.0
+*みどり*017.ogg*嗯嗯，原来是这样啊。
+*みどり*018.ogg*作者说还希望你继续提问哦。
+@ch c none 1.0
+@goto LOOP1
+
+:L1_NEXT
+
+###
+### 场景4 (在海边接受提问)
+###
+
+@ch c 001-fun.png 1.0
+*みどり*019.ogg*离开学校，稍微散个步吧。要去哪里？去海滩那边吧。
+
+@vol bgm 0.0 1.0
+@bg coast.png 1.0 c
+@vol bgm 1.0 0.0
+@bgm coast.ogg
+@ch c 001-happy.png 1.0
+*みどり*020.ogg*还有其他想知道的事情吗？
+@ch c none 1.0
+
+:LOOP2
+@select L2_OLD L2_CUSTOMIZE L2_NEXT 也有Suika1吗？ 可以自己定制吗？ 下一步
+
+:L2_OLD
+2.0.0之前的版本是名称为西瓜Studio的软件。\n2001年到2003年之间，作者还是高中生的时候开发・公开了这个软件。
+2.0.0之后因为削减了编辑器的功能，因此把Studio这个名号去掉了。
+西瓜Studio Ver.0.47.4至今也留在Vector的网页上，有兴趣的话可以去找找看。
+@set $3 = 1
+@ch c 001-fun.png 1.0
+*みどり*015.ogg*嘿，原来是这样啊。我都不知道呢。
+*みどり*018.ogg*作者说还希望你继续提问哦。
+@ch c none 1.0
+@goto LOOP2
+
+:L2_CUSTOMIZE
+字体文件、文本框、存档画面等等，在本软件的设计上这些功能基本上都可以进行任意的自定制。
+如果你想要自定制却无法实现的项目，请联络作者吧。
+@set $4 = 1
+@ch c 001-fun.png 1.0
+*みどり*017.ogg*嗯嗯，是这样啊。
+*みどり*016.ogg*还有其他要问的事情吗？
+@ch c none 1.0
+@goto LOOP2
+
+:L2_NEXT
+
+###
+### 场景5 (海滩的最后一幕・台词与终幕的交错)
+###
+
+@ch c 001-fun.png 1.0
+*みどり*021.ogg*谢谢你今天听了这么多事情。
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*みどり*022.ogg*（我希望你能了解Suika 2的事情……）
+
+@vol bgm 1.0 1.0
+@ch c 001-fun.png 1.0
+*みどり*023.ogg*如果有不明白的地方的话，欢迎你随时给 midori@luxion.jp 发送邮件哦。
+
+@vol bgm 0.5 1.0
+@ch c none 1.0
+*みどり*024.ogg*（……真的发邮件过来也没关系哦？　你会发邮件过来吧？）
+
+@vol bgm 0.0 1.0
+@ch c 001-fun.png 1.0
+*みどり*025.ogg*那么，我们再见吧！
+
+###
+### シーン6 (其他补充)
+###
+
+@if $1 != 1 END
+@if $2 != 1 END
+@if $3 != 1 END
+@if $4 != 1 END
+谢谢你读完了全部内容。
+
+###
+### 结束标志
+###
+
+:END
+@bg white.png 1.0
+@ch c luxion.png 0.5
+@wait 1.0
+@ch c none 1.0
